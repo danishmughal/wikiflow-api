@@ -1,1 +1,1 @@
-REST backend API for Wikileaks - Angelhack SV 2013
+REST backend API for Wikiflow - Angelhack SV 2013

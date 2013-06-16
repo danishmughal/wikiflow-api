@@ -1,4 +1,16 @@
 WikiflowApi::Application.routes.draw do
+
+  post '/diagram/create/:value' => 'main#creatediagram'
+  post '/subdiagram/create/:id'
+
+  get "/diagram/:id" => "main#showdiagram"
+  get "/subdiagrams/:id" => "main#showsubdiagram"
+
+  post '/diagram/:id/:value' => 'main#updatediagram'
+
+  delete '/diagram/:id/:subdiagramid' => 'main#deletesubdiagram'
+  delete '/diagram/:id' => 'main#deletediagram'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
