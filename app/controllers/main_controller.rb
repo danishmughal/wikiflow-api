@@ -1,10 +1,39 @@
 class MainController < ApplicationController
 
-
 	def creatediagram
+		require 'uri'
+		@id = params[:id]
+		@value = params[:value]
+
+		@url = "https://wikiflow.firebaseio.com/#{@id}"
+
+		Firebase.base_uri = URI.escape(@url)
+		response = Firebase.push('current', @value)
+
+		if (response)
+			render :text => 'Diagram successfully created'
+		else
+			render :text => 'Failed :( Try again.'
+		end
+
 	end
 
 	def createsubdiagram
+		require 'uri'
+		@id = params[:id]
+		@value = params[:value]
+
+		@url = "https://wikiflow.firebaseio.com/#{@id}"
+
+		Firebase.base_uri = URI.escape(@url)
+		response = Firebase.push('subdiagrams', @value)
+
+		if (response)
+			render :text => 'Subdiagram successfully created'
+		else
+			render :text => 'Failed :( Try again.'
+		end
+
 	end
 
 
@@ -36,7 +65,7 @@ class MainController < ApplicationController
 		if (response)
 			render :text => 'Successful update'
 		else
-			render :text => 'Update failed :( \n Try again.'
+			render :text => 'Update failed :( Try again.'
 		end
 	end
 
@@ -67,7 +96,7 @@ class MainController < ApplicationController
 		if (response)
 			render :text => 'Successfully deleted diagram'
 		else
-			render :text => 'Delete failed :( \n Try again.'
+			render :text => 'Delete failed :( Try again.'
 		end
 	
 
@@ -85,9 +114,9 @@ class MainController < ApplicationController
 		if (response)
 			render :text => 'Successfully deleted subdiagram'
 		else
-			render :text => 'Delete failed :( \n Try again.'
+			render :text => 'Delete failed :( Try again.'
 		end
-	
 
 	end
+
 end

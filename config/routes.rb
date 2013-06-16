@@ -1,7 +1,7 @@
 WikiflowApi::Application.routes.draw do
 
-  post '/diagram/create/:value' => 'main#creatediagram'
-  post '/subdiagram/create/:id'
+  post '/diagram/create/:id/:value' => 'main#creatediagram'
+  post '/subdiagram/create/:id/:value' => 'main#createsubdiagram'
 
   get "/diagram/:id" => "main#showdiagram"
   get "/subdiagrams/:id" => "main#showsubdiagram"
