@@ -3,7 +3,7 @@ class MainController < ApplicationController
 	def creatediagram
 		require 'uri'
 		@id = params[:id]
-		@value = params[:value]
+		@value = { :svgInfo => params[:value] }
 
 		@url = "https://wikiflow.firebaseio.com/#{@id}"
 
@@ -21,7 +21,7 @@ class MainController < ApplicationController
 	def createsubdiagram
 		require 'uri'
 		@id = params[:id]
-		@value = params[:value]
+		@value = { :svgInfo => params[:value] }
 
 		@url = "https://wikiflow.firebaseio.com/#{@id}"
 
